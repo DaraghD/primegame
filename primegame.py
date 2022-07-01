@@ -77,8 +77,6 @@ while True:
     answer = int(input())
     answer_string = str(answer)
     answer_length = len(answer_string)
-    if answer_length < 2:
-        print("\nWrong input , nice try kiddo")
     if answer in answerlist:
         score += 1
         print("you win, your score is", score)
