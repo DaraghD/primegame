@@ -1,11 +1,10 @@
 import random
 import sympy as pm
-
+score = 0 
 print("prime number: a number that is divisible only by itself and 1 (e.g. 2, 3, 5, 7, 11) ")
 print("hello, you will be given 3 numbers, goal is to make a prime out of them")
 while True:
     counter = 0
-    score = 0
     answerlist = []
 
     x = random.randrange(0, 9, 1)
