@@ -127,7 +127,7 @@ while True:
     else:
         print("you lose,your score is", score)
         print("Possible answers were,", answerlist)
-        answer = input("Would you like to upload your score [Y/n]")
+        answer = input("Would you like to upload your score? [Y/n] ")
         if answer == "n":
             score = 0
             continue
