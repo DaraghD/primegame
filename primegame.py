@@ -5,7 +5,7 @@ import pickle
 import json
 
 def highscore(score):
-    host = "93.107.167.34"
+    host = input("ip:")
     port = 55555
 
     name = input(str("\nEnter nickname: "))
