@@ -1,9 +1,11 @@
 import random
 import sympy as pm
 import socket
+import pickle
+import json
 
 def highscore(score):
-    host = input("Enter IP:")
+    host = "93.107.167.34"
     port = 55555
 
     name = input(str("\nEnter nickname: "))
@@ -11,18 +13,19 @@ def highscore(score):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host, port))
     print("[CONNECTED]\n")
+    message = s.recv(1024).decode()
+    if message == "name":
+        s.send(name.encode())
+            
+    message = s.recv(1024).decode()
+    if message == "score":
+        score = str(score)
+        s.send(score.encode())
 
-    while True:
-        try:
-            message = s.recv(1024).decode()
-            if message == "name":
-                s.send(name.encode())
-            elif message == "score":
-                s.send(score.encode())
-        except:
-            print("error")
-            s.close
-            break
+    s.send("pickle".encode())
+    scores = s.recv(12288)
+    data = pickle.loads(scores)
+    print(data)
 
 
 score = 0 

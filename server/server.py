@@ -1,15 +1,16 @@
 import socket
 import time
 import sys
+import pickle
 
 print("\nWelcome to primegame server!\n")
 print("[LOADING]")
 time.sleep(1)
 
-host = input("input IP:")
+host = "192.168.1.2"
 port = 55555
 
-scores = []
+scores = {}
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port))
@@ -23,21 +24,21 @@ def main():
         conn.send("name".encode())
         name = conn.recv(1024)
         name = name.decode()
+        print(name)
 
         conn.send("score".encode())
         score = conn.recv(1024)
         score = score.decode()
-        with open('scores.txt') as f:
-            for line in f:
-                name, score = line.strip().split()
-                scores.append ((name, int(score)))
+        print(score)
+        
+        scores[name] = score
+        print(scores)
+        data = pickle.dumps(scores)
 
-        # get top 5
-        sorted_scores = sorted(scores, key=lambda x: x[1], reverse=True)
+        message = conn.recv(1024)
+        if message.decode() == "pickle":
+            conn.send(data)
 
-        print('The First 5 Highscores are:')
-        for item in sorted_scores[:5]:
-            conn.send(item.encode())
 
 
 
