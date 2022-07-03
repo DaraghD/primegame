@@ -15,6 +15,7 @@ def scoreboard(data):
         print(i[0], " :", i[1], " ")
     
     print("Thanks for playing, https://github.com/DaraghD/primegame") 
+    time.sleep(1000000) # stops window from closing immediately 
         
         
 def highscore(score):
