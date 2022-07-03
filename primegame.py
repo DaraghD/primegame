@@ -15,7 +15,7 @@ def scoreboard(data):
         
         
 def highscore(score):
-    host = input("ip:")
+    host = "93.107.167.34"
     port = 55555
 
     name = input(str("\nEnter nickname: "))
