@@ -2,7 +2,18 @@ import random
 import sympy as pm
 import socket
 import pickle
+from collections import Counter
 
+
+
+def scoreboard(data):
+    k = Counter(data)# lol
+    leaderboard = k.most_common(5)  # returns dictionary with highest values up to n
+    # prints keys values
+    for i in leaderboard:
+        print(i[0], " :", i[1], " ")
+        
+        
 def highscore(score):
     host = input("ip:")
     port = 55555
@@ -24,7 +35,7 @@ def highscore(score):
     s.send("pickle".encode())
     scores = s.recv(12288)
     data = pickle.loads(scores)
-    print(data)
+    scoreboard(data)
 
 
 score = 0 
