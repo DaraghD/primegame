@@ -1,5 +1,30 @@
 import random
 import sympy as pm
+import socket
+
+def highscore(score):
+    host = "0.0.0.0"
+    port = 55555
+
+    name = input(str("\nEnter nickname: "))
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+    print("[CONNECTED]\n")
+
+    while True:
+        try:
+            message = s.recv(1024).decode()
+            if message == "name":
+                s.send(name.encode())
+            elif message == "score":
+                s.send(score.encode())
+        except:
+            print("error")
+            s.close
+            break
+
+
 score = 0 
 print("prime number: a number that is divisible only by itself and 1 (e.g. 2, 3, 5, 7, 11) ")
 print("hello, you will be given 3 numbers, goal is to make a prime out of them")
@@ -84,7 +109,7 @@ while True:
     else:
         print("you lose,your score is", score)
         print("Possible answers were,", answerlist)
-        answer = input("Would you like to upload your score [y/n]")
+        answer = input("Would you like to upload your score [Y/n]")
         if answer == "n":
             continue
         else:
@@ -92,25 +117,4 @@ while True:
             break
 
 
-def highscore(score):
-    host = "0.0.0.0"
-    port = 55555
-
-    name = input(str("\nEnter nickname: "))
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, port))
-    print("[CONNECTED]\n")
-
-    while True:
-        try:
-            message = s.recv(1024).decode()
-            if message == "name":
-                s.send(name.encode())
-            elif message == "score":
-                s.send(score.encode())
-        except:
-            print("error")
-            s.close
-            break
 

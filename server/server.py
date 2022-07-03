@@ -37,7 +37,7 @@ def main():
 
         print('The First 5 Highscores are:')
         for item in sorted_scores[:5]:
-            conn.send(item)
+            conn.send(item.encode())
 
 
 
