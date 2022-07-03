@@ -10,7 +10,7 @@ def scoreboard(data):
     k = Counter(data)# lol
     leaderboard = k.most_common(5)  # returns dictionary with highest values up to n
     # prints keys values
-    print("This is the scoreboard:")
+    print("Scoreboard:")
     for i in leaderboard:
         print(i[0], " :", i[1], " ")
     
