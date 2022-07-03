@@ -129,8 +129,8 @@ while True:
         print("Possible answers were,", answerlist)
         answer = input("Would you like to upload your score [Y/n]")
         if answer == "n":
-            continue
             score = 0
+            continue
         else:
             highscore(score)
             break
