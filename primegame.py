@@ -2,7 +2,6 @@ import random
 import sympy as pm
 import socket
 import pickle
-import json
 
 def highscore(score):
     host = input("ip:")
