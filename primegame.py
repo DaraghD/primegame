@@ -3,7 +3,7 @@ import sympy as pm
 import socket
 
 def highscore(score):
-    host = "0.0.0.0"
+    host = input("Enter IP:")
     port = 55555
 
     name = input(str("\nEnter nickname: "))
