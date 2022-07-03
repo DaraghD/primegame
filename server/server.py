@@ -20,9 +20,13 @@ def main():
     while True:
         conn, addr = s.accept()
 
+        conn.send("name".encode())
+        name = conn.recv(1024)
+        name = name.decode()
+
         conn.send("score".encode())
         score = conn.recv(1024)
-        scores.append(score)
+        score = score.decode()
         with open('scores.txt') as f:
             for line in f:
                 name, score = line.strip().split()
