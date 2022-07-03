@@ -7,7 +7,7 @@ print("\nWelcome to primegame server!\n")
 print("[LOADING]")
 time.sleep(1)
 
-host = "192.168.1.2"
+host = input("ip:")
 port = 55555
 
 scores = {}
