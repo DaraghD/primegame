@@ -126,11 +126,11 @@ while True:
 
     else:
         print("you lose,your score is", score)
-        score = 0 #stops cheaters :) (adam)
         print("Possible answers were,", answerlist)
         answer = input("Would you like to upload your score [Y/n]")
         if answer == "n":
             continue
+            score = 0
         else:
             highscore(score)
             break
