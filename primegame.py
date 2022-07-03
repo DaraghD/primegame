@@ -79,9 +79,38 @@ while True:
     if answer in answerlist:
         score += 1
         print("you win, your score is", score)
+        print("Possible answers were,", answerlist)
 
     else:
         print("you lose,your score is", score)
+        print("Possible answers were,", answerlist)
+        answer = input("Would you like to upload your score [y/n]")
+        if answer == "n":
+            continue
+        else:
+            highscore(score)
+            break
 
 
-    print("Possible answers were,", answerlist)
+def highscore(score):
+    host = "0.0.0.0"
+    port = 55555
+
+    name = input(str("\nEnter nickname: "))
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+    print("[CONNECTED]\n")
+
+    while True:
+        try:
+            message = s.recv(1024).decode()
+            if message == "name":
+                s.send(name.encode())
+            elif message == "score":
+                s.send(score.encode())
+        except:
+            print("error")
+            s.close
+            break
+
