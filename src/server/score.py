@@ -1,23 +1,6 @@
-import socket
-import time
-import sys
 import pickle
-
-print("\nWelcome to primegame server!\n")
-print("[LOADING]")
-time.sleep(1)
-
-host = input("ip:")
-port = 55555
-
-scores = {}
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((host, port))
-s.listen()
-
-
-def main():
+ 
+def handle_scores(s):
     while True:
         conn, addr = s.accept()
 
@@ -38,11 +21,3 @@ def main():
         message = conn.recv(1024)
         if message.decode() == "pickle":
             conn.send(data)
-
-
-
-
-
-main()
-
-
