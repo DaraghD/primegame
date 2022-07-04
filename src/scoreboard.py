@@ -37,3 +37,15 @@ def update_and_recieve_scoreboard(score):
     scores = s.recv(12288)
     data = pickle.loads(scores)
     return data
+
+def recieve_scoreboard():
+    host = "93.107.167.34"
+    port = 55555
+    
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+    print("[CONNECTED]\n")
+    s.send("req".encode())
+    data = s.recv(12288)
+    data = pickle.loads(data)
+    return data
