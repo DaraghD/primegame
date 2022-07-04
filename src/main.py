@@ -1,47 +1,6 @@
 import random
 import sympy as pm
-import socket
-import pickle
-from collections import Counter
-import time
-
-
-
-def scoreboard(data):
-    k = Counter(data)# lol
-    leaderboard = k.most_common(100)  # returns dictionary with highest values up to n
-    # prints keys values
-    print("Scoreboard:")
-    for i in leaderboard:
-        print(i[0], " :", i[1], " ")
-    
-    print("Thanks for playing, https://github.com/DaraghD/primegame") 
-    time.sleep(1000000) # stops window from closing immediately 
-        
-        
-def highscore(score):
-    host = "93.107.167.34"
-    port = 55555
-
-    name = input(str("\nEnter nickname: "))
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, port))
-    print("[CONNECTED]\n")
-    message = s.recv(1024).decode()
-    if message == "name":
-        s.send(name.encode())
-            
-    message = s.recv(1024).decode()
-    if message == "score":
-        score = str(score)
-        s.send(score.encode())
-
-    s.send("pickle".encode())
-    scores = s.recv(12288)
-    data = pickle.loads(scores)
-    scoreboard(data)
-
+import scoreboard
 
 score = 0 
 print("prime number: a number that is divisible only by itself and 1 (e.g. 2, 3, 5, 7, 11) ")
@@ -132,8 +91,6 @@ while True:
             score = 0
             continue
         else:
-            highscore(score)
+            data = scoreboard.update_and_recieve_scoreboard(score)
+            scoreboard.display_scoreboard(data)
             break
-
-
-

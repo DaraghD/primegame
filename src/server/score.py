@@ -1,5 +1,7 @@
 import pickle
- 
+
+scores = {}
+
 def handle_scores(s):
     while True:
         conn, addr = s.accept()
