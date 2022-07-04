@@ -1,4 +1,2 @@
-import run
-
 def run():
-    run.run()
+    import run
