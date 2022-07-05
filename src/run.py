@@ -75,7 +75,7 @@ while True:
         if counter > 0:
             print("\nHere are your 3 numbers", x, y, z)
 
-    answer = int(input())
+    answer = int(input(":"))
     answer_string = str(answer)
     answer_length = len(answer_string)
     if answer in answerlist:
