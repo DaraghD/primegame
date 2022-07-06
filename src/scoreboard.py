@@ -15,7 +15,7 @@ def display_scoreboard(data):
     input(":") 
         
 def update_and_recieve_scoreboard(score):
-    host = "93.107.167.34"
+    host = input("Enter IP address of server:")
     port = 55555
 
     name = input(str("\nEnter nickname: "))
@@ -38,7 +38,7 @@ def update_and_recieve_scoreboard(score):
     return data
 
 def recieve_scoreboard():
-    host = "93.107.167.34"
+    host = input("Enter IP address of server:")
     port = 55555
     
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
