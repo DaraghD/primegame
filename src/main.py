@@ -1,9 +1,9 @@
 import game
 import menu
 import scoreboard
-import time
+import os
 
-
+done = False
 
 def main():
     selection = menu.main_menu()
@@ -14,8 +14,14 @@ def main():
         scoreboard.display_scoreboard(data)
     if selection == "3":
         print("just enter a prime lol")
-        for i in range(10):
-            print("\n")
+
+        if os.name == 'posix':
+            os.system('clear')
+        else:
+            os.system('cls')
+
+    if selection == "4":
+        exit(0)
 
 while True:
     main()
