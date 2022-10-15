@@ -1,4 +1,14 @@
-import sympy as pm
+def isprime(num):
+    if num > 1:
+        for i in range(2, int(num / 2) + 1):
+
+            if (num % i) == 0:
+                return False
+                break
+        else:
+            return True
+    else:
+        return False
 
 def mPrime(n1, n2, n3):
     p1 = n1 * 100 + n2 * 10 + n3
@@ -11,27 +21,27 @@ def mPrime(n1, n2, n3):
 
 def ifPrime(n1, n2, n3, n4, n5, n6):
     ifPrimelist = []
-    g1 = pm.isprime(n1)
+    g1 = isprime(n1)
     if g1 == True:
         ifPrimelist.append(n1)
 
-    g2 = pm.isprime(n2)
+    g2 = isprime(n2)
     if g2 == True:
         ifPrimelist.append(n2)
 
-    g3 = pm.isprime(n3)
+    g3 = isprime(n3)
     if g3 == True:
         ifPrimelist.append(n3)
 
-    g4 = pm.isprime(n4)
+    g4 = isprime(n4)
     if g4 == True:
         ifPrimelist.append(n4)
 
-    g5 = pm.isprime(n5)
+    g5 = isprime(n5)
     if g5 == True:
         ifPrimelist.append(n5)
 
-    g6 = pm.isprime(n6)
+    g6 = isprime(n6)
     if g6 == True:
         ifPrimelist.append(n6)
     return ifPrimelist

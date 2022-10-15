@@ -1,5 +1,4 @@
 import random
-import sympy as pm
 import scoreboard
 import functions
 
